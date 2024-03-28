@@ -15,21 +15,23 @@ def gift_wrapping(points):
             break
     return hull
 
-arr_points = []
+if __name__ == "__main__":
+        
+    arr_points = []
 
-n = int(input())
-for i in range (n):
-    print("x: ")
-    x = int(input())
-    print("y: ")
-    y = int(input())
-    point = Point(x, y)
-    arr_points.append(point)
+    n = int(input())
+    for i in range (n):
+        print("x: ")
+        x = int(input())
+        print("y: ")
+        y = int(input())
+        point = Point(x, y)
+        arr_points.append(point)
 
-arr_points.sort()
+    arr_points.sort()
 
-hall = gift_wrapping(arr_points)
-for i in hall:
-    print(i)
+    hall = gift_wrapping(arr_points)
+    for i in hall:
+        print(i)
 
-# Протестировать, не уверен что до конца работает
+    # Протестировать, не уверен что до конца работает
