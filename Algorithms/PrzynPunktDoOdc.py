@@ -39,7 +39,6 @@ def CzynalezyDoOdcinka(p1,p2,p3, czywypis) -> bool:
         if p3.y < min(p1.y, p2.y):
             nalezy = False
 
-
     if czywypis:
         print("czy punkt " + str(p3) + "\nnalezy do prostej wyznaczonej przez punkty:\n" + str(p1) + "\n" + str(p2) + "\n: " + str(nalezy))
 

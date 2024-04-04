@@ -1,0 +1,26 @@
+class Point (punkt):
+
+    from PrzynPunktDoOdc import Point
+
+    w klasie sa generator od (x,y)
+    porownanie dla posortowania
+    metoda toStr
+    i metoda print
+
+liczenie wyznacznika macierzy (po jakiej stronie punkt od odcinka):
+
+    from PrzynPunktDoOdc import detOfMatrix
+    
+    detOfMatrix(p1,p2,p3), gdzie p1 i p2 sa odcinkiem
+
+wczytywanie siecy przeplywowej:
+
+    SiecPrzeplywowa.py
+
+Algorytm Jarvisa:
+
+    from OtoczkaWypuklaJarvis import gift_wrapping
+
+    gift_wrapping(points) - tabela punktows
+
+

@@ -1,2 +1,3 @@
 [] - Write algorithm Grahama
-[] - Write Przynaleznosc Punktu do Odcinka
+[] - Write Przynaleznosc Punktu do Wielokata
+[] - Test otoczkaWypuklaJarvis
