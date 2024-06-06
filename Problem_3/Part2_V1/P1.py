@@ -31,7 +31,7 @@
 
 ### Algorithm:
 import random
-from collections import deque
+
 
 # Max brightness
 MAX_RANDOM_BRIGHTNESS = 20
@@ -64,38 +64,38 @@ def FindKeysByValue(my_dict: dict, value: int) -> list[int]:
 
 
 # glowna czesc algorytmu
-def GetOptimalStops(brightnessdict: dict, securityEnergy: int) -> list[int]:
-    optimalStops = []
+def GetOptimalStops(brightness_dict: dict, security_energy: int) -> list[int]:
 
-    pointNowBrightness = brightnessdict[1]
+    optimal_stops = []
+    current_position = 1
+
+    if not brightness_dict:
+        return optimal_stops
     
-            
-    # robimy liste jasnosci dostepnych punktow 
-    pointsRange = list(brightnessdict.values())[0:securityEnergy+1]
+    current_brightness = brightness_dict[current_position]
 
-    while brightnessdict:
+    while brightness_dict:
+        # Robimy liste jasnosci dostepnych punktow
+        start_index = max(0, current_position - security_energy - 1)
+        end_index = min(len(brightness_dict), current_position + security_energy)
+        points_range = list(brightness_dict.values())[start_index:end_index]
 
-        print("range: ", pointsRange)
-        # pobieramy nextStop
-        nextStop = FindMaxLessThan(pointsRange, pointNowBrightness)
-        
+        if not points_range:
+            break
 
-        if not nextStop:
-            nextStop = max(pointsRange)
-        print("next stop ", nextStop)
+        next_stop = FindMaxLessThan(points_range, current_brightness)
 
-        optimalStops.append(nextStop)
-        keyNextStop = FindKeysByValue(brightnessdict, nextStop)
+        if next_stop is None:
+            next_stop = max(points_range)
 
-        brightnessdict.pop(keyNextStop[-1], None)
+        optimal_stops.append(next_stop)
+        key_next_stop = FindKeysByValue(brightness_dict, next_stop)[0]
 
-        #вот здесь проблема, надо как-то вернуть список доступных пунктов
+        current_position = key_next_stop
+        current_brightness = brightness_dict.pop(current_position)
 
-        pointsRange = list(brightnessdict.values())[keyNextStop[-1] - 1:securityEnergy+1]
-        print("optimal stops: ", optimalStops)
+    return optimal_stops
 
-        print("")
-    return optimalStops
         
 
 if __name__ == "__main__":
