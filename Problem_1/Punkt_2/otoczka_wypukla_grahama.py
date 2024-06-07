@@ -33,24 +33,32 @@ def graham(points):
 
     return stack
 
-def generate_points(number, x_min, x_max, y_min, y_max):
+def generate_points(number, min_bound, max_bound):
     points = []
     for _ in range(number):
-        x = random.randint(x_min, x_max)
-        y = random.randint(y_min, y_max)
+        x = random.randint(min_bound, max_bound)
+        y = random.randint(min_bound, max_bound)
         points.append(Point(x, y))
     return points
 
-if __name__ == "__main__":
-    points=generate_points(10, 0, 10, 0, 10)
+def get_result(points):
+    return graham(points)
+
+def get_result():
+    points = generate_points(10, -10, 10)
+    print("Wszystkie punkty:")
     for point in points:
         point.print()
 
-    print("***********")
-    result=graham(points)
+    return graham(points)
 
+if __name__ == "__main__":
+    result = get_result()
+
+    print("Punkty otoczki:")
     for point in result:
         point.print()
-   
+
+
 
 
