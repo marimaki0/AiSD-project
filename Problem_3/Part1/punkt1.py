@@ -12,12 +12,10 @@ def generate_and_find_max_plaszczaki(punkty_otoczki: list[int]) -> list[int]:
     strazniki = {}
     counter=1
 
-    for i in max_numbers:
-            strazniki[f"plasczak {counter}"]=i
-            counter+=1
+    #for i in max_numbers:
+    #        strazniki[f"plasczak {counter}"]=i
+    #        counter+=1
 
-    for key, value in strazniki.items():
-        print(f"{key}: {value}")
 
     return max_numbers
 
