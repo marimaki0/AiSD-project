@@ -8,9 +8,10 @@ jasnosc = p3_v1.MakeRandomBrightness(len(otoczka))
 
 plaszczaki_lista = p3.generate_and_find_max_plaszczaki(otoczka)
 
-print(jasnosc)
-print(otoczka)
+print("jasnosc: ", jasnosc)
+print("otoczka: ", otoczka)
+print("plaszczaki lista: ", plaszczaki_lista)
 
-for i in range (len(otoczka)):
+for i in range (0, len(plaszczaki_lista) - 1):
     rez=jasnosc
     print("Optimal stop: ", p3_v1.GetOptimalStops(rez, plaszczaki_lista[i]))
