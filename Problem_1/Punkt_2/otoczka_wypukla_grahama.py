@@ -11,6 +11,9 @@ class Point:
 
     def distance_between_2points(self, other):
         return math.sqrt(math.pow(self.x - other.x, 2) + math.pow(self.y - other.y, 2))
+    
+    def __str__(self) -> str:
+        return "point" + "(x" + ":" , self.x, " , y" + ":", self.y, ")"
 
 def det(p1,p2,p3):
     return p1.x * p2.y + p2.x * p3.y + p3.x * p1.y - p2.y * p3.x - p1.y * p2.x - p3.y * p1.x
@@ -41,16 +44,17 @@ def generate_points(number, min_bound, max_bound):
         points.append(Point(x, y))
     return points
 
-def get_result(points):
-    return graham(points)
 
 def get_result():
     points = generate_points(10, -10, 10)
-    print("Wszystkie punkty:")
-    for point in points:
-        point.print()
+    result = graham(points)
+
+   # print("Punkty otoczki:")
+   # for point in result:
+   #     point.print()
 
     return graham(points)
+
 
 if __name__ == "__main__":
     result = get_result()
