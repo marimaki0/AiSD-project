@@ -1,11 +1,11 @@
 import random
-import numpy as np
+from numpy import array_split, max
 
 def generate_and_find_max_plaszczaki(punkty_otoczki: list[int]) -> list[int]:
     plaszczaki=[random.randint(0, len(punkty_otoczki)) for _ in range(800)]
 
-    parts = np.array_split(plaszczaki, 8)
-    max_numbers = [np.max(part) for part in parts]
+    parts = array_split(plaszczaki, 8)
+    max_numbers = [max(part) for part in parts]
 
     strazniki = {}
     counter=1
