@@ -41,16 +41,20 @@ def generate_points(number, min_bound, max_bound):
         points.append(Point(x, y))
     return points
 
-def get_result(points):
+def get_result(points):    
     return graham(points)
 
 def get_result():
     points = generate_points(10, -10, 10)
-    print("Wszystkie punkty:")
-    for point in points:
+    result = graham(points)
+
+    print("Punkty otoczki:")
+    for point in result:
         point.print()
 
+
     return graham(points)
+
 
 if __name__ == "__main__":
     result = get_result()
