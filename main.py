@@ -4,10 +4,10 @@ import Problem_3.Part2_V1.P1 as p3_v1
 import Problem_3.Part2_V2.p3 as p3_v2
 
 
-otoczka = list(p1.get_result())
+otoczka = list(p1.GetResult())
 jasnosc = p3_v1.MakeRandomBrightness(len(otoczka))
 
-plaszczaki_lista = p3.generate_and_find_max_plaszczaki(otoczka)
+plaszczaki_lista = p3.GenerateAndFindMaxPlaszczaki(otoczka)
 
 print("jasnosc: ", jasnosc)
 print("otoczka: ", otoczka)

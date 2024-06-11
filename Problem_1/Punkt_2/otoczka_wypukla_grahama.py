@@ -15,28 +15,28 @@ class Point:
     def __str__(self) -> str:
         return "point" + "(x" + ":" , self.x, " , y" + ":", self.y, ")"
 
-def det(p1,p2,p3):
+def Det(p1,p2,p3):
     return p1.x * p2.y + p2.x * p3.y + p3.x * p1.y - p2.y * p3.x - p1.y * p2.x - p3.y * p1.x
 
-def angle(point0, p):
+def Angle(point0, p):
     return math.atan2(p.y - point0.y, p.x - point0.x)
 
-def graham(points):
+def Graham(points):
     point0=min(points, key=lambda p:(p.y, p.x))
     points.remove(point0)
 
-    points.sort(key=lambda p: (angle(point0, p), point0.distance_between_2points(p)))
+    points.sort(key=lambda p: (Angle(point0, p), point0.distance_between_2points(p)))
 
     stack=[point0, points[0]]
 
     for p in points[1:]:
-        while len(stack)>1 and det(stack[-2], stack[-1], p) <= 0:
+        while len(stack)>1 and Det(stack[-2], stack[-1], p) <= 0:
             stack.pop()
         stack.append(p)
 
     return stack
 
-def generate_points(number, min_bound, max_bound):
+def GeneratePoints(number, min_bound, max_bound):
     points = []
     for _ in range(number):
         x = random.randint(min_bound, max_bound)
@@ -45,19 +45,19 @@ def generate_points(number, min_bound, max_bound):
     return points
 
 
-def get_result():
-    points = generate_points(10, -10, 10)
-    result = graham(points)
+def GetResult():
+    points = GeneratePoints(10, -10, 10)
+    result = Graham(points)
 
    # print("Punkty otoczki:")
    # for point in result:
    #     point.print()
 
-    return graham(points)
+    return Graham(points)
 
 
 if __name__ == "__main__":
-    result = get_result()
+    result = GetResult()
 
     print("Punkty otoczki:")
     for point in result:
