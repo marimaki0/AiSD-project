@@ -48,17 +48,6 @@ def GeneratePoints(number, min_bound, max_bound):
         points.append(Point(x, y))
     return points
 
-
-def GetResult():
-    points = GeneratePoints(10, -10, 10)
-    result = Graham(points)
-
-   # print("Punkty otoczki:")
-   # for point in result:
-   #     point.print()
-
-    return Graham(points)
-
 def plot_convex_hull(points, hull):
     x_points = [p.x for p in points]
     y_points = [p.y for p in points]
@@ -76,6 +65,11 @@ def plot_convex_hull(points, hull):
     plt.grid(True)
     plt.show()
 
+def GetResult():
+    points = GeneratePoints(100, -10, 10)
+    result = Graham(points)
+
+    return points, result
 
 if __name__ == "__main__":
     points, result = GetResult()
@@ -85,7 +79,3 @@ if __name__ == "__main__":
         point.print()
 
     plot_convex_hull(points, result)
-
-
-
-
