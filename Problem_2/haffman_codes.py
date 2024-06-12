@@ -95,7 +95,7 @@ def VisualizeHuffmanTree(node):
 
 if __name__ == "__main__":
 
-    # Pierwszy przykład
+    # Test 1
     input_file_path = 'test1.txt'
     output_file_path = 'output1.txt'
     replacements = {'Lorem': 'absolutnie nie Lorem', 'ipsum': 'print(hello World)'}
@@ -110,7 +110,26 @@ if __name__ == "__main__":
     decoded_data = HuffmanDecoding(encoded_data, codebook)
     print("Decoded data:", decoded_data)
 
-    # visualizacja
+    # # visualizacja
+    # frequencies = Counter(modified_text)
+    # huffman_tree = BuildHuffmanTree(frequencies)
+    # VisualizeHuffmanTree(huffman_tree)
+
+
+    # Test 2 - Opowieść-melodia
+    input_text = "boli boli boli boli poli boli boli"
+    replacements = {'poli': 'boli'}
+    modified_text = ReplaceWords(input_text, replacements)
+
+    print("Original text:", input_text)
+    print("Modified text:", modified_text)
+
+    encoded_data, codebook = HuffmanEncoding(modified_text)
+    print("Encoded data:", encoded_data)
+
+    decoded_data = HuffmanDecoding(encoded_data, codebook)
+    print("Decoded data:", decoded_data)
+
     frequencies = Counter(modified_text)
     huffman_tree = BuildHuffmanTree(frequencies)
     VisualizeHuffmanTree(huffman_tree)
