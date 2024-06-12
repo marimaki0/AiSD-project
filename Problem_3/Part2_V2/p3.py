@@ -1,4 +1,5 @@
 import random
+import matplotlib.pyplot as plt
 
 #max brightness
 MAX_RANDOM_BRIGHTNESS = 20
@@ -6,10 +7,10 @@ MIN_RANDOM_BRIGHTNESS = 2
 
 #robimy losowy slownik jasnosci
 def MakeRandomBrightness(otoczka: int) -> dict:
-    otoczkaBrightness = {}
+    otoczka_brightness = {}
     for i in range(1, otoczka + 1):
-        otoczkaBrightness[i] = random.randint(MIN_RANDOM_BRIGHTNESS, MAX_RANDOM_BRIGHTNESS)
-    return otoczkaBrightness
+        otoczka_brightness[i] = random.randint(MIN_RANDOM_BRIGHTNESS, MAX_RANDOM_BRIGHTNESS)
+    return otoczka_brightness
 
 #znalezc maksymalna liczbe, mniejsza niz podana
 def FindMaxLessThan(numbers: list[int], threshold: int) -> int:
@@ -67,9 +68,12 @@ def GetOptimalStops(brightness_dict: dict, security_energy: int) -> list[int]:
         energy_levels.append(remaining_energy)
         current_brightness = brightness_dict.pop(current_position)
 
-    print("Path: ", path)
-    print("Energy levels: ", energy_levels)
+    # print("Path: ", path)
+    # print("Energy levels: ", energy_levels)
+
+    
     return optimal_stops
+
 
 if __name__ == "__main__":
     # Testowanie

@@ -14,9 +14,12 @@ print("otoczka: ", otoczka)
 print("plaszczaki lista: ", plaszczaki_lista)
 
 for i in range (0, len(plaszczaki_lista) - 1):
-    rez = jasnosc
+    jasnosc_copy = jasnosc.copy()
     en = plaszczaki_lista[i]
-    r = p3_v1.GetOptimalStops(rez, en)
+
+    r = p3_v1.GetOptimalStops(jasnosc_copy, en)
     print("Optimal stop v1: ", r)
-    r2 = p3_v2.GetOptimalStops(rez, en)
+
+    jasnosc_copy = jasnosc.copy()
+    r2 = p3_v2.GetOptimalStops(jasnosc_copy, en)
     print("Optimal stop v2: ", r2)

@@ -12,8 +12,11 @@ class Point:
     def distance_between_2points(self, other):
         return math.sqrt(math.pow(self.x - other.x, 2) + math.pow(self.y - other.y, 2))
     
-    def __str__(self) -> str:
-        return "point" + "(x" + ":" , self.x, " , y" + ":", self.y, ")"
+    def __repr__(self):
+        return f"\n(x={self.x}, y={self.y})"
+    
+    def __str__(self):
+        return f"({self.x}, {self.y})"
 
 def Det(p1,p2,p3):
     return p1.x * p2.y + p2.x * p3.y + p3.x * p1.y - p2.y * p3.x - p1.y * p2.x - p3.y * p1.x
