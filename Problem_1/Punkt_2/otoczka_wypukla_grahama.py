@@ -40,6 +40,7 @@ def Graham(points):
     return stack
 
 def GeneratePoints(number, min_bound, max_bound):
+    
     points = []
     for _ in range(number):
         x = random.randint(min_bound, max_bound)
@@ -52,7 +53,12 @@ def GeneratePoints(number, min_bound, max_bound):
 
 
 def GetResult():
-    points = GeneratePoints(20, -100, 100)
+    points = GeneratePoints(0, -100, 100)
+    
+    if len(points) == 0:
+        print("Nie ma punktow")
+        return []
+    
     result = Graham(points)
 
    # print("Punkty otoczki:")
@@ -65,9 +71,10 @@ def GetResult():
 if __name__ == "__main__":
     result = GetResult()
 
-    print("Punkty otoczki:")
-    for point in result:
-        point.print()
+    if len(result)!=0:
+        print("Punkty otoczki:")
+        for point in result:
+            point.print()
 
 
 
