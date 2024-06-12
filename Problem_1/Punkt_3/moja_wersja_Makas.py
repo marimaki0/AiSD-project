@@ -10,27 +10,27 @@ class Point:
     def __repr__(self):
         return f"({self.x}, {self.y})"
 
-    def distance_between_2points(self, other):
+    def DistanceBetween2Points(self, other):
         return math.sqrt(math.pow(self.x - other.x, 2) + math.pow(self.y - other.y, 2))
 
-def det(p1, p2, p3):
+def Def(p1, p2, p3):
     return p1.x * p2.y + p2.x * p3.y + p3.x * p1.y - p2.y * p3.x - p1.y * p2.x - p3.y * p1.x
 
-def angle(point0, p):
+def Angle(point0, p):
     return math.atan2(p.y - point0.y, p.x - point0.x)
 
-def graham(points):
+def Graham(points):
     point0 = min(points, key=lambda p: (p.y, p.x))
     points.remove(point0)
-    points.sort(key=lambda p: (angle(point0, p), point0.distance_between_2points(p)))
+    points.sort(key=lambda p: (Angle(point0, p), point0.DistanceBetween2Points(p)))
     stack = [point0, points[0]]
     for p in points[1:]:
-        while len(stack) > 1 and det(stack[-2], stack[-1], p) <= 0:
+        while len(stack) > 1 and Def(stack[-2], stack[-1], p) <= 0:
             stack.pop()
         stack.append(p)
     return stack
 
-def generate_points(number, x_min, x_max, y_min, y_max):
+def GeneratePoints(number, x_min, x_max, y_min, y_max):
     points = []
     for _ in range(number):
         x = random.randint(x_min, x_max)
@@ -38,7 +38,7 @@ def generate_points(number, x_min, x_max, y_min, y_max):
         points.append(Point(x, y))
     return points
 
-def bfs(residual_graph, source, sink, parent):
+def Bfs(residual_graph, source, sink, parent):
     visited = set()
     queue = deque([source])
     visited.add(source)
@@ -53,7 +53,7 @@ def bfs(residual_graph, source, sink, parent):
                     return True
     return False
 
-def edmondsKarp(graph, source, sink):
+def EdmondsKarp(graph, source, sink):
     residual_graph = defaultdict(dict)
     for u in graph:
         for v in graph[u]:
@@ -61,7 +61,7 @@ def edmondsKarp(graph, source, sink):
             residual_graph[v][u] = 0
     parent = {}
     max_flow = 0
-    while bfs(residual_graph, source, sink, parent):
+    while Bfs(residual_graph, source, sink, parent):
         path_flow = float('Inf')
         s = sink
         while s != source:
@@ -77,41 +77,42 @@ def edmondsKarp(graph, source, sink):
     return max_flow
 
 if __name__ == "__main__":
-    # Generate random points
-    points = generate_points(10, 0, 10, 0, 10)
-    print("Generated points:")
+    
+    #generowanie losowych punktow
+    points = GeneratePoints(10, 0, 10, 0, 10)
+    print("Wygenerowane punkty: ")
     for point in points:
         print(point)
 
-    # Compute convex hull using Graham's scan
-    convex_hull = graham(points)
-    print("\nConvex Hull points:")
+    #oblicznie otoczki wypuklej za pomoca alg. Grahama
+    convex_hull = Graham(points)
+    print("\nPunkty otoczki wypuklej: ")
     for point in convex_hull:
         print(point)
 
-    # Create graph from convex hull
+    #tworzymy graf z punktow otoczki wypuklej
     graph = defaultdict(dict)
     n = len(convex_hull)
-    source = 0  # Assuming 0 is the source (factory)
-    sink = n + 1  # New sink node
+    source = 0  #zakladamy ze 0 - zrodlo
+    sink = n + 1  #nowe ujscie
 
-    # Add edges between the factory and the convex hull points
+    #dodawanie krawedzi miedzy fabryka a punktami otoczki
     for i in range(n):
-        graph[source][i + 1] = 1  # Capacity of 1 (friend relationship)
-        graph[i + 1][sink] = 1  # Connect hull points to sink
+        graph[source][i + 1] = 1 #przepustowosc 1 (relacja przyjzni)
+        graph[i + 1][sink] = 1 #laczenie punktow otoczki z ujsciem
 
-    # Add edges between hull points with random capacities (0 or 1)
+    #dodawamie krawedzi miedzy punktami otoczki z losowymi przepustowosciami (0 lub 1) 
     for i in range(n):
         for j in range(i + 1, n):
-            capacity = random.choice([0, 1])  # Randomly decide if they are friends (capacity 1) or not (capacity 0)
+            capacity = random.choice([0, 1]) #losowe okreslenie czy sa przyjaciolmi (przepustowosc 1) czy nie (przepustowość 0)
             graph[i + 1][j + 1] = capacity
             graph[j + 1][i + 1] = capacity
 
-    print("\nGenerated Graph with Random Capacities:")
+    print("\nWygenerowany graf z losowymi przepustowosciami: ")
     for u in graph:
         for v in graph[u]:
             print(f"{u} -> {v} : {graph[u][v]}")
 
-    # Compute max flow using Edmonds-Karp algorithm
-    max_flow_value = edmondsKarp(graph, source, sink)
-    print("\nMax Flow (using Edmonds-Karp):", max_flow_value)
+    #obliczenie maks. przeplywu przy pomocy alg. Edmondsa-Karpa
+    max_flow_value = EdmondsKarp(graph, source, sink)
+    print("\nMaksymalny przeplyw (algorytm Edmondsa-Karpa):", max_flow_value)
