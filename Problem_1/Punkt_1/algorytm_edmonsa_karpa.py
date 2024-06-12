@@ -62,7 +62,7 @@ def EdmondsKarp(graph, source, sink):
     return max_flow
 
 #przykladowe wywolanie funkcji
-source = 0  # zakladajac, że 0 to źródło
-sink = 3    # zakladajac, że 3 to ujście
+source = 0  #zakladajac, że 0 to zrodlo
+sink = 3    #zakladajac, że 3 to ujscie
 max_flow_value = EdmondsKarp(graph, source, sink)
 print("Maksymalny przeplyw (dzieki algorytmu Edmonsa-Karpa):", max_flow_value)
