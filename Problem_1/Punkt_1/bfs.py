@@ -1,5 +1,5 @@
 from collections import deque, defaultdict
-def bfs(residual_graph, source, sink, parent):
+def Bfs(residual_graph, source, sink, parent):
     visited = set()
     queue = deque([source])
     visited.add(source)
