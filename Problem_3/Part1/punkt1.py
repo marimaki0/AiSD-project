@@ -3,7 +3,7 @@ import random
 import numpy as np
 import Problem_1.Punkt_2.otoczka_wypukla_grahama as p6
 
-def generate_and_find_max_plaszczaki(punkty_otoczki: list[int]) -> list[int]:
+def GenerateAndFindMaxPlaszczaki(punkty_otoczki: list[int]) -> list[int]:
 
     plaszczaki=[random.randint(0, len(punkty_otoczki)) for _ in range(800)]
 
@@ -17,11 +17,10 @@ def generate_and_find_max_plaszczaki(punkty_otoczki: list[int]) -> list[int]:
     #        strazniki[f"plasczak {counter}"]=i
     #        counter+=1
 
-
     return max_numbers
 
 if __name__ == "__main__":
-    max_numbers = generate_and_find_max_plaszczaki(100)
+    max_numbers = GenerateAndFindMaxPlaszczaki(100)
     strazniki = {}
     counter=1
 
