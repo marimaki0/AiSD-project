@@ -2,7 +2,7 @@ import tworzenie_sieci_rezydualnej
 from collections import deque
 
 #plik "wczytywanie_grafu_z_pliku_tekstowego"
-def read_graph_from_file(filename):
+def ReadGraphFromFile(filename):
     graph = {}
     with open(filename, 'r') as file:
         for line in file:
@@ -13,11 +13,11 @@ def read_graph_from_file(filename):
     return graph
 
 filename = 'graph.txt'
-graph = read_graph_from_file(filename)
+graph = ReadGraphFromFile(filename)
 print("Graf, ktory jest pobrany z pliku:", graph)
 
 #plik "wczytywanie_grafu_z_pliku_tekstowego"
-def bfs(residual_graph, source, sink, parent):
+def Bfs(residual_graph, source, sink, parent):
     visited = set()
     queue = deque([source])
     visited.add(source)
@@ -37,12 +37,12 @@ def bfs(residual_graph, source, sink, parent):
 
 
 
-def edmondsKarp(graph, source, sink):
-    residual_graph = tworzenie_sieci_rezydualnej.ResidualGraph(graph).buildResidualGraph()
+def EdmondsKarp(graph, source, sink):
+    residual_graph = tworzenie_sieci_rezydualnej.ResidualGraph(graph).BuildResidualGraph()
     parent = {}
     max_flow = 0
 
-    while bfs(residual_graph, source, sink, parent):
+    while Bfs(residual_graph, source, sink, parent):
         path_flow = float('Inf')
         s = sink
 
@@ -62,7 +62,7 @@ def edmondsKarp(graph, source, sink):
     return max_flow
 
 #przykladowe wywolanie funkcji
-source = 0  # zakladajac, że 0 to źródło
-sink = 3    # zakladajac, że 3 to ujście
-max_flow_value = edmondsKarp(graph, source, sink)
+source = 0  #zakladajac, że 0 to zrodlo
+sink = 3    #zakladajac, że 3 to ujscie
+max_flow_value = EdmondsKarp(graph, source, sink)
 print("Maksymalny przeplyw (dzieki algorytmu Edmonsa-Karpa):", max_flow_value)

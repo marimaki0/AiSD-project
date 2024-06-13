@@ -3,7 +3,7 @@ class ResidualGraph:
         self.graph = graph
         self.residual_graph = {}
 
-    def buildResidualGraph(self):
+    def BuildResidualGraph(self):
         for u in self.graph:
             for v, capacity in self.graph[u].items():
                 if u not in self.residual_graph:

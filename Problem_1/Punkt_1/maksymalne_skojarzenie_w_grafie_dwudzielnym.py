@@ -1,17 +1,17 @@
-from algorytm_edmonsa_karpa import edmondsKarp
+from algorytm_edmonsa_karpa import EdmondsKarp
 
 #w tym kodzie jest konwertacja z grafu
-#dwudzielnego na siec przeplywowa
+#dwudzielnego w siec przeplywowa
 #a potem znajduje maksymalny przepływ
 #za pomoca alg. Edmonsa-Karpa
 
-def bipartiteToFlowGraph(bipartite_graph, X, Y):
+def BipartiteToFlowGraph(bipartite_graph, X, Y):
     flow_graph = {}
 
     #dodawanie wierzcholku zrodlowego `s` jako 0-ego
     flow_graph[0] = {x: 1 for x in X}
 
-    #odawanie wierzcholku ujsiowego `t` jako n+1, gdzie `n` jest najwiekszym wierzcholkiem w X lub Y
+    #dodawanie wierzcholku ujsiowego `t` jako n+1, gdzie `n` jest najwiekszym wierzcholkiem w X lub Y
     t = max(max(X), max(Y)) + 1
     for y in Y:
         if y not in flow_graph:
@@ -38,6 +38,6 @@ bipartite_graph = {
 X = [1, 2, 3, 7, 8]
 Y = [4, 5, 6]
 
-flow_graph, t = bipartiteToFlowGraph(bipartite_graph, X, Y)
-max_matching = edmondsKarp(flow_graph, 0, t)
+flow_graph, t = BipartiteToFlowGraph(bipartite_graph, X, Y)
+max_matching = EdmondsKarp(flow_graph, 0, t)
 print("Maksymalne skojarzenie w grafie dwudzielnym:", max_matching)

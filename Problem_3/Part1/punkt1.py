@@ -1,7 +1,5 @@
 import random
-
 import numpy as np
-import Problem_1.Punkt_2.otoczka_wypukla_grahama as p6
 
 def GenerateAndFindMaxPlaszczaki(punkty_otoczki: list[int]) -> list[int]:
 
