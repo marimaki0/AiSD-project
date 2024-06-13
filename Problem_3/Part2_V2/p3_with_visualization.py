@@ -112,14 +112,14 @@ def VisualizePath(path, energy_levels, otoczka_len, brightness_dict):
     for i in range(len(path_x) - 1):
         ax1.annotate('', xy=(path_x[i + 1], path_y[i + 1]), xytext=(path_x[i], path_y[i]), arrowprops=dict(arrowstyle="->", color='gray'))
 
-    ax1.set_title("Sciezka na Poligonie")
+    ax1.set_title("Sciezka na otoczce")
     ax1.legend()
 
     # Wizualizacja poziomów energii i ścieżki
     color = 'tab:blue'
     ax2.set_xlabel('Krok')
     ax2.set_ylabel('Pozycja', color=color)
-    ax2.plot(range(len(path)), path, color=color, marker='o', label='Ścieżka')
+    ax2.plot(range(len(path)), path, color=color, marker='o', label='Sciezka')
     ax2.tick_params(axis='y', labelcolor=color)
     ax2.legend(loc='upper left')
 
