@@ -53,7 +53,7 @@ def GeneratePoints(number, min_bound, max_bound):
 
 
 def GetResult():
-    points = GeneratePoints(0, -100, 100)
+    points = GeneratePoints(20, -100, 100)
     
     if len(points) == 0:
         print("Nie ma punktow")

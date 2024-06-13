@@ -27,7 +27,7 @@ def FindKeysByValue(my_dict: dict, value: int) -> list[int]:
     return keys
 
 # Główna część algorytmu
-def GetOptimalStops(brightness_dict: dict, security_energy: int) -> list[int]:
+def GetOptimalStops(brightness_dict: dict, security_energy: int, vizualize: bool) -> list[int]:
     optimal_stops = []
     current_position = 1
     remaining_energy = security_energy
@@ -70,53 +70,46 @@ def GetOptimalStops(brightness_dict: dict, security_energy: int) -> list[int]:
         energy_levels.append(remaining_energy)
         current_brightness = brightness_dict.pop(current_position)
 
-    # Печать пути и уровней энергии
-    print("Path: ", path)
-    print("Energy levels: ", energy_levels)
-    
-    VisualizePath(path, energy_levels, otoczka, visualizing_brightness_dict)
-    
+
+    if vizualize:
+        print("Path: ", path)
+        print("Energy levels: ", energy_levels)
+        VisualizePath(path, energy_levels, len(visualizing_brightness_dict), visualizing_brightness_dict)
+
     return optimal_stops
 
-# Функция для визуализации пути
+
 def VisualizePath(path, energy_levels, otoczka_len, brightness_dict):
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 7))
 
-    # Расположение точек на окружности
     theta = [2 * np.pi * i / otoczka_len for i in range(otoczka_len)]
     x = [10 * np.cos(t) for t in theta]
     y = [10 * np.sin(t) for t in theta]
 
-    # Координаты пути
     path_x = [x[i - 1] for i in path]
     path_y = [y[i - 1] for i in path]
 
-    # Замыкаем полигон
     x.append(x[0])
     y.append(y[0])
     path_x.append(path_x[0])
     path_y.append(path_y[0])
 
-    # Визуализация пути на окружности
     ax1.plot(x, y, 'bo-', label='Points')
     ax1.plot(path_x, path_y, 'ro-', label='Path')
     for i, txt in enumerate(range(1, otoczka_len + 1)):
         brightness = brightness_dict.get(i + 1, 0)
         ax1.annotate(f'{txt}:{brightness}', (x[i], y[i]), textcoords="offset points", xytext=(0, 10), ha='center')
     
-    # Начальная точка
     ax1.annotate('Start', (path_x[0], path_y[0]), textcoords="offset points", xytext=(-10, -20), ha='center', color='green', fontsize=12, fontweight='bold', arrowprops=dict(arrowstyle="->", color='green'))
-    # Конечная точка
+
     ax1.annotate('End', (path_x[-2], path_y[-2]), textcoords="offset points", xytext=(-10, -20), ha='center', color='red', fontsize=12, fontweight='bold', arrowprops=dict(arrowstyle="->", color='red'))
     
-    # Стрелки направления
     for i in range(len(path_x) - 1):
         ax1.annotate('', xy=(path_x[i + 1], path_y[i + 1]), xytext=(path_x[i], path_y[i]), arrowprops=dict(arrowstyle="->", color='gray'))
 
     ax1.set_title("Path on the Polygon")
     ax1.legend()
 
-    # Визуализация уровней энергии и пути
     color = 'tab:blue'
     ax2.set_xlabel('Step')
     ax2.set_ylabel('Position', color=color)
@@ -141,5 +134,5 @@ if __name__ == "__main__":
     sec1 = 6
     test1 = {1: 9, 2: 8, 3: 6, 4: 5, 5: 19, 6: 10, 7: 15}
     print("Initial brightness dict:", test1)
-    optimal_stops = GetOptimalStops(test1, sec1)
+    optimal_stops = GetOptimalStops(test1, sec1, True)
     print("Optimal stops:", optimal_stops)
