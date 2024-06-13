@@ -68,8 +68,8 @@ def GetOptimalStops(brightness_dict: dict, security_energy: int) -> list[int]:
         energy_levels.append(remaining_energy)
         current_brightness = brightness_dict.pop(current_position)
 
-    # print("Path: ", path)
-    # print("Energy levels: ", energy_levels)
+    print("Path: ", path)
+    print("Energy levels: ", energy_levels)
 
     
     return optimal_stops

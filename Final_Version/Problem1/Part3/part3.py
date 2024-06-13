@@ -78,11 +78,13 @@ def EdmondsKarp(graph, source, sink):
 
 if __name__ == "__main__":
     
+    
     #generowanie losowych punktow
     points = GeneratePoints(10, 0, 10, 0, 10)
     print("Wygenerowane punkty: ")
     for point in points:
         print(point)
+    
 
     #oblicznie otoczki wypuklej za pomoca alg. Grahama
     convex_hull = Graham(points)
