@@ -66,7 +66,12 @@ def plot_convex_hull(points, hull):
     plt.show()
 
 def GetResult():
-    points = GeneratePoints(100, -10, 10)
+    points = GeneratePoints(100, -100, 100)
+
+    if len(points) == 0:
+        print("Nie ma punktow")
+        return []
+
     result = Graham(points)
 
     return points, result
