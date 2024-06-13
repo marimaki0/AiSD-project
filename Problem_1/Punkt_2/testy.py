@@ -53,7 +53,7 @@ def GetResult(custom_points):
 
 if __name__ == "__main__":
     # Read points from file
-    filename = 'C:/Users/Comp/Desktop/projekt_aisd2/AiSD-project/Problem_1/Punkt_2/test1.txt'
+    filename = 'test1.txt'
     custom_points = read_points_from_file(filename)
 
     result = GetResult(custom_points)
