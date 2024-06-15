@@ -58,12 +58,6 @@ def GetResult():
     if len(points) == 0:
         print("Nie ma punktow")
         return []
-    
-    result = Graham(points)
-
-   # print("Punkty otoczki:")
-   # for point in result:
-   #     point.print()
 
     return Graham(points)
 
