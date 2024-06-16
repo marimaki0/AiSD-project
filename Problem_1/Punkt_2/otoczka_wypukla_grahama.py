@@ -32,6 +32,7 @@ def Graham(points):
     point0=min(points, key=lambda p:(p.y, p.x))
     points.remove(point0)
 
+    #Sortujemy listę punktów według dwóch kryteriów: kąta oraz, w przypadku identycznych kątów, odległości od point0
     points.sort(key=lambda p: (Angle(point0, p), point0.distance_between_2points(p)))
 
     stack=[point0, points[0]]
