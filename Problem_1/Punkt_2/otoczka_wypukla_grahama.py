@@ -18,16 +18,21 @@ class Point:
     def __str__(self):
         return f"({self.x}, {self.y})"
 
+
+#Obliczamy wyznacznik
 def Det(p1,p2,p3):
     return p1.x * p2.y + p2.x * p3.y + p3.x * p1.y - p2.y * p3.x - p1.y * p2.x - p3.y * p1.x
 
+#Obliczamy kąt między punktem początkowym point0 a innym punktem
 def Angle(point0, p):
     return math.atan2(p.y - point0.y, p.x - point0.x)
 
+#Algorytm Grahama do znajdowania otoczki wypukłej
 def Graham(points):
     point0=min(points, key=lambda p:(p.y, p.x))
     points.remove(point0)
 
+    #Sortujemy listę punktów według dwóch kryteriów: kąta oraz, w przypadku identycznych kątów, odległości od point0
     points.sort(key=lambda p: (Angle(point0, p), point0.distance_between_2points(p)))
 
     stack=[point0, points[0]]
@@ -40,7 +45,6 @@ def Graham(points):
     return stack
 
 def GeneratePoints(number, min_bound, max_bound):
-    
     points = []
     for _ in range(number):
         x = random.randint(min_bound, max_bound)
@@ -55,6 +59,7 @@ def GeneratePoints(number, min_bound, max_bound):
 def GetResult():
     points = GeneratePoints(20, -100, 100)
     
+    #Dla przypadku, gdy było podano 0 punktów
     if len(points) == 0:
         print("Nie ma punktow")
         return []
