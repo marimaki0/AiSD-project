@@ -3,6 +3,7 @@ import random
 from collections import deque, defaultdict
 import matplotlib.pyplot as plt
 import networkx as nx
+import Problem_1.Punkt_2.otoczka_wypukla_grahama as p1
 
 class Point:
     def __init__(self, x, y):

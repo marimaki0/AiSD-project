@@ -30,12 +30,13 @@ def Graham(points):
         stack.append(p)
     return stack
 
-def GeneratePoints(number, x_min, x_max, y_min, y_max):
+def GeneratePoints(number, min_bound, max_bound):
     points = []
     for _ in range(number):
-        x = random.randint(x_min, x_max)
-        y = random.randint(y_min, y_max)
+        x = random.randint(min_bound, max_bound)
+        y = random.randint(min_bound, max_bound)
         points.append(Point(x, y))
+        
     return points
 
 def Bfs(residual_graph, source, sink, parent):
@@ -79,7 +80,7 @@ def EdmondsKarp(graph, source, sink):
 if __name__ == "__main__":
     
     #generowanie losowych punktow
-    points = GeneratePoints(10, 0, 10, 0, 10)
+    points = GeneratePoints(20, -100, 100)
     print("Wygenerowane punkty: ")
     for point in points:
         print(point)

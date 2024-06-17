@@ -50,9 +50,7 @@ def GeneratePoints(number, min_bound, max_bound):
         x = random.randint(min_bound, max_bound)
         y = random.randint(min_bound, max_bound)
         points.append(Point(x, y))
-
-    for i in points:
-        print(i)
+        
     return points
 
 def GetPoints():
