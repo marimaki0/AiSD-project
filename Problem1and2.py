@@ -22,7 +22,6 @@ for i in range (0, len(plaszczaki_lista) - 1):
     else:
         r = p3_v1.GetOptimalStops(jasnosc_copy, en, False)
         print("Optimal stop v1: ", r)
-
-        jasnosc_copy = jasnosc.copy()
-        r2 = p3_v2.GetOptimalStops(jasnosc_copy, en)
-        print("Optimal stop v2: ", r2)
+        # jasnosc_copy = jasnosc.copy()
+        # r2 = p3_v2.GetOptimalStops(jasnosc_copy, en, False)
+        # print("Optimal stop v2: ", r2)
