@@ -95,20 +95,20 @@ def VisualizeHuffmanTree(node):
 
 if __name__ == "__main__":
 
-    # Test 1
-    input_file_path = 'test1.txt'
-    output_file_path = 'output1.txt'
-    replacements = {'Lorem': 'absolutnie nie Lorem', 'ipsum': 'print(hello World)'}
+    # # Test 1
+    # input_file_path = 'test1.txt'
+    # output_file_path = 'output1.txt'
+    # replacements = {'Lorem': 'absolutnie nie Lorem', 'ipsum': 'print(hello World)'}
 
-    original_text = ReadFile(input_file_path)
+    # original_text = ReadFile(input_file_path)
 
-    modified_text = ReplaceWords(original_text, replacements)
+    # modified_text = ReplaceWords(original_text, replacements)
 
-    encoded_data, codebook = HuffmanEncoding(modified_text)
-    WriteFile(output_file_path, encoded_data)
+    # encoded_data, codebook = HuffmanEncoding(modified_text)
+    # WriteFile(output_file_path, encoded_data)
 
-    decoded_data = HuffmanDecoding(encoded_data, codebook)
-    print("Decoded data:", decoded_data)
+    # decoded_data = HuffmanDecoding(encoded_data, codebook)
+    # print("Decoded data:", decoded_data)
 
     # # visualizacja
     # frequencies = Counter(modified_text)

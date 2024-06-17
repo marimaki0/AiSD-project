@@ -17,7 +17,7 @@ for i in range (0, len(plaszczaki_lista) - 1):
     jasnosc_copy = jasnosc.copy()
     en = plaszczaki_lista[i]
 
-    if i == 0:
+    if i == 1:
         r = p3_v1.GetOptimalStops(jasnosc_copy, en, True)
     else:
         r = p3_v1.GetOptimalStops(jasnosc_copy, en, False)
