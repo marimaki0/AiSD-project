@@ -1,4 +1,4 @@
-import tworzenie_sieci_rezydualnej
+import tworzenie_sieci_rezydualnej as tworzenie_sieci_rezydualnej
 from collections import deque
 
 #plik "wczytywanie_grafu_z_pliku_tekstowego"
