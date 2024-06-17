@@ -55,9 +55,12 @@ def GeneratePoints(number, min_bound, max_bound):
         print(i)
     return points
 
+def GetPoints():
+    points = GeneratePoints(20, -100, 100)
+    return points
 
 def GetResult():
-    points = GeneratePoints(20, -100, 100)
+    points=GetPoints()
     
     #Dla przypadku, gdy było podano 0 punktów
     if len(points) == 0:
