@@ -39,6 +39,19 @@ def GeneratePoints(number, min_bound, max_bound):
         
     return points
 
+def GetPoints():
+    points = GeneratePoints(20, -100, 100)
+    return points
+
+def GetResult():
+    points=GetPoints()
+    
+    if len(points) == 0:
+        print("Nie ma punktow")
+        return []
+
+    return Graham(points)
+
 def Bfs(residual_graph, source, sink, parent):
     visited = set()
     queue = deque([source])
