@@ -1,6 +1,7 @@
 import random
 import numpy as np
 
+
 def GenerateAndFindMaxPlaszczaki(punkty_otoczki: list[int]) -> list[int]:
     #Tworzymy listu plaszczakow, w której będzie maksymalna ilosc energii - to ilość punktów otoczki
     plaszczaki=[random.randint(0, len(punkty_otoczki)) for _ in range(800)]
@@ -12,7 +13,8 @@ def GenerateAndFindMaxPlaszczaki(punkty_otoczki: list[int]) -> list[int]:
     return max_numbers
 
 if __name__ == "__main__":
-    max_numbers = GenerateAndFindMaxPlaszczaki(100)
+    list=[1,6,2,9,3,6,7,3,9]
+    max_numbers = GenerateAndFindMaxPlaszczaki(list)
     strazniki = {}
     counter=1
 
