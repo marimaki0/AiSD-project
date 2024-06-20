@@ -12,7 +12,8 @@ def GenerateAndFindMaxPlaszczaki(punkty_otoczki: list[int]) -> list[int]:
     return max_numbers
 
 if __name__ == "__main__":
-    max_numbers = GenerateAndFindMaxPlaszczaki(100)
+    list=[1,6,2,1,3,6,7,3,1]
+    max_numbers = GenerateAndFindMaxPlaszczaki(list)
     strazniki = {}
     counter=1
 
