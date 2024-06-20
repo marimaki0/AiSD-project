@@ -1,7 +1,6 @@
 import Problem_1.Punkt_2.otoczka_wypukla_grahama as p1
 import Problem_3.Part1.punkt1 as p3
 import Problem_3.Part2_V1.P1 as p3_v1
-import Problem_3.Part2_V2.p3 as p3_v2
 
 
 otoczka = list(p1.GetResult())

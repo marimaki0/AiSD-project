@@ -95,41 +95,41 @@ def VisualizeHuffmanTree(node):
 
 if __name__ == "__main__":
 
-    # # Test 1
-    # input_file_path = 'test1.txt'
-    # output_file_path = 'output1.txt'
-    # replacements = {'Lorem': 'absolutnie nie Lorem', 'ipsum': 'print(hello World)'}
+    # Test 1
+    input_file_path = 'test1.txt'
+    output_file_path = 'output1.txt'
+    replacements = {'Lorem': 'absolutnie nie Lorem', 'ipsum': 'print(hello World)'}
 
-    # original_text = ReadFile(input_file_path)
+    original_text = ReadFile(input_file_path)
 
-    # modified_text = ReplaceWords(original_text, replacements)
-
-    # encoded_data, codebook = HuffmanEncoding(modified_text)
-    # WriteFile(output_file_path, encoded_data)
-
-    # decoded_data = HuffmanDecoding(encoded_data, codebook)
-    # print("Decoded data:", decoded_data)
-
-    # # visualizacja
-    # frequencies = Counter(modified_text)
-    # huffman_tree = BuildHuffmanTree(frequencies)
-    # VisualizeHuffmanTree(huffman_tree)
-
-
-    # Test 2 - Opowieść-melodia
-    input_text = "boli boli boli boli poli boli boli"
-    replacements = {'poli': 'boli'}
-    modified_text = ReplaceWords(input_text, replacements)
-
-    print("Original text:", input_text)
-    print("Modified text:", modified_text)
+    modified_text = ReplaceWords(original_text, replacements)
 
     encoded_data, codebook = HuffmanEncoding(modified_text)
-    print("Encoded data:", encoded_data)
+    WriteFile(output_file_path, encoded_data)
 
     decoded_data = HuffmanDecoding(encoded_data, codebook)
     print("Decoded data:", decoded_data)
 
+    # visualizacja
     frequencies = Counter(modified_text)
     huffman_tree = BuildHuffmanTree(frequencies)
     VisualizeHuffmanTree(huffman_tree)
+
+
+    # # Test 2 - Opowieść-melodia
+    # input_text = "boli boli boli boli poli boli boli"
+    # replacements = {'poli': 'boli'}
+    # modified_text = ReplaceWords(input_text, replacements)
+
+    # print("Original text:", input_text)
+    # print("Modified text:", modified_text)
+
+    # encoded_data, codebook = HuffmanEncoding(modified_text)
+    # print("Encoded data:", encoded_data)
+
+    # decoded_data = HuffmanDecoding(encoded_data, codebook)
+    # print("Decoded data:", decoded_data)
+
+    # frequencies = Counter(modified_text)
+    # huffman_tree = BuildHuffmanTree(frequencies)
+    # VisualizeHuffmanTree(huffman_tree)
